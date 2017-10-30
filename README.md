@@ -1,4 +1,4 @@
-﻿# The fantastic four coding patterns of Continuous Delivery
+# The fantastic four coding patterns of Continuous Delivery
 
 In this repo you find an example in C# of the coding patterns derscribed in the InfoQ article [Continuous Delivery Coding Patterns: Latent-to-Live Code & Forward Compatible Interim Versions](https://www.infoq.com/articles/continuous-delivery-coding-patterns).
 
@@ -22,6 +22,8 @@ The file that stores ideal laptime and the degradation per lap.
 This version is the first step in extending the tyre degradation simulation taking into account tyre's temperature.
 It consists in adding side-by-side the new simulation paramiter in TyreDegradationParameters, and the new simulation in TyreDegradationSimulator, both as latent code.
 
+The new code added can be automatically tested, while keeping the system working as before and in a releasable state at any time.
+
 - **Backward compativility breaking changes: none.**
 
 - **Rollback version: v1.**
@@ -30,7 +32,9 @@ It consists in adding side-by-side the new simulation paramiter in TyreDegradati
 
 ## Version 2b-Latent-to-live-code
 
-In TyreDegradationSimulator, latent code to live, call the overload
+Side-by-side code in TyreDegradationParameters and TyreDegradationSimulator previously added and tested, can now be partially used in production replacing instead of the original simulation code: it is executed using temperature parameters set to zero so that temperature has no effect on the tyre degradation.
+
+In this way the new code can be verified that it does not introduce any bug to the existing simulation model.
 
 ## Version 2c-Latent-to-live-code+feature-toggle
 
