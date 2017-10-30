@@ -32,15 +32,31 @@ The new code added can be automatically tested, while keeping the system working
 
 ## Version 2b-Latent-to-live-code
 
-Side-by-side code in TyreDegradationParameters and TyreDegradationSimulator previously added and tested, can now be partially used in production replacing instead of the original simulation code: it is executed using temperature parameters set to zero so that temperature has no effect on the tyre degradation.
+Side-by-side code in TyreDegradationParameters and TyreDegradationSimulator previously added and tested, is now partially used in production replacing the original simulation code: it is executed using temperature parameters set to zero so that temperature has no effect on the tyre degradation.
 
 In this way the new code can be verified that it does not introduce any bug to the existing simulation model.
 
-## Version 2c-Latent-to-live-code+feature-toggle
+- **Backward compativility breaking changes: none.**
 
-In Program, read 
-- Degradation per operating temperature delta and
-- Simulation operating temperature delta
+- **Rollback version: v2a.**
+
+- **Supported Db version: v10.**
+
+
+## Version 2c-Latent-to-live-code + toggle
+
+Code is added to Program, in order to inquire also for the simulation parameters of the temperature.
+Code is also added to Storage to persist and retrieve the temperature parameters (introducing the v11 of the db).
+
+At this stage this new code is supposed to be used only in development and test mode and **not** in production.
+For this reason a feature toggle is added, and it must be switched off in the release.
+
+- **Backward compativility breaking changes: none.**
+
+- **Rollback version: v2b.**
+
+- **Supported Db version: v10.**
+
 
 ## Version 3a-Forward-compatible-interim-version
 
