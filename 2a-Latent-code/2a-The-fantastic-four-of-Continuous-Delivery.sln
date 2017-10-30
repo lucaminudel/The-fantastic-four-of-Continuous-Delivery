@@ -1,0 +1,30 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TyresDegradationSimulator", "TyresDegradationSimulator\TyresDegradationSimulator.csproj", "{C8D060A5-B4D3-4FB2-A632-8BB1FC4519A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TyresDegradationSimulator.Tests", "TyresDegradationSimulator.Tests\TyresDegradationSimulator.Tests.csproj", "{ABA8F166-A8FA-4906-B9C5-1D7475B76618}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C8D060A5-B4D3-4FB2-A632-8BB1FC4519A0}.Debug|x86.ActiveCfg = Debug|x86
+		{C8D060A5-B4D3-4FB2-A632-8BB1FC4519A0}.Debug|x86.Build.0 = Debug|x86
+		{C8D060A5-B4D3-4FB2-A632-8BB1FC4519A0}.Release|x86.ActiveCfg = Release|x86
+		{C8D060A5-B4D3-4FB2-A632-8BB1FC4519A0}.Release|x86.Build.0 = Release|x86
+		{ABA8F166-A8FA-4906-B9C5-1D7475B76618}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{ABA8F166-A8FA-4906-B9C5-1D7475B76618}.Debug|x86.Build.0 = Debug|Any CPU
+		{ABA8F166-A8FA-4906-B9C5-1D7475B76618}.Release|x86.ActiveCfg = Release|Any CPU
+		{ABA8F166-A8FA-4906-B9C5-1D7475B76618}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$1.DirectoryNamespaceAssociation = PrefixedFlat
+	EndGlobalSection
+EndGlobal

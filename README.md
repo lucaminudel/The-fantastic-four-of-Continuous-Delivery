@@ -9,17 +9,24 @@ Files for each version are organised in a different folders, to make it easier t
 
 This is the initial version that simulates tyre degradation using only a linear degradation per lap and the ideal lap time.
 
-- **Backward compativility breaking changes**: none.
+- **Backward compativility breaking changes: none.**
 
-- **Rollback version**: v0.
+- **Rollback version: v0.**
 This is the previous official and well functioning version that can be used to replace this version in case a show-stopper bug shows-up.
 
-- **Supported Db version**: v10
+- **Supported Db version: v10.**
 The file that stores ideal laptime and the degradation per lap.
 
 ## Version 2a-Latent-code
 
-In TyreDegradationSimulator, overload
+This version is the first step in extending the tyre degradation simulation taking into account tyre's temperature.
+It consists in adding side-by-side the new simulation paramiter in TyreDegradationParameters, and the new simulation in TyreDegradationSimulator, both as latent code.
+
+- **Backward compativility breaking changes: none.**
+
+- **Rollback version: v1.**
+
+- **Supported Db version: v10.**
 
 ## Version 2b-Latent-to-live-code
 
