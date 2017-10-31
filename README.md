@@ -45,23 +45,33 @@ In this way the new code can be verified that it does not introduce any bug to t
 
 ## Version 2c-Latent-to-live-code + toggle
 
-Code is added to Program, in order to inquire also for the simulation parameters of the temperature.
-Code is also added to Storage to persist and retrieve the temperature parameters (introducing the v11 of the db).
+This version includes additional code in Program to inquire also for the simulation parameters of the temperature.
+It also includes additional code i Storage to persist and retrieve the temperature parameters (introducing the v11 of the db).
 
-At this stage this new code is supposed to be used only in development and test mode and **not** in production.
-For this reason a feature toggle is added, and it must be switched off in the release.
+Because the db version v11 break beckward compatibility, this would make it "impossible" to rollback to the previous version in case of a showstopper bug, leaving us without a viable remediation plan. For that reason, a feature toggle is introduced here to switch the new feature on and off, making it possible to:
+- test the new version working on db v11 in the dev/test environment 
+- continue testing the latent-to-live code and the last changes in the prod environment, 
+- release this verion with the toggle off to keep it working with db v10.
 
-- **Backward compativility breaking changes: none.**
+This version is a step-stone for creating a forward compatible version to manage the breaking changes on the db. 
 
-- **Rollback version: v2b.**
+- **Backward compativility breaking changes: none (yes with toggle on).**
 
-- **Supported Db version: v10.**
+- **Rollback version: v2b (none with toggle on).**
+
+- **Supported Db version: v10 (v11 with toggle on).**
 
 
 ## Version 3a-Forward-compatible-interim-version
 
 In storage, delivered with db v10
 with auto fallback feature toggle
+
+- **Backward compativility breaking changes: none.**
+
+- **Rollback version: v2c.**
+
+- **Supported Db version: v10, v11.**
 
 ## Version 3b-Forward-compatible-interim-version
 
