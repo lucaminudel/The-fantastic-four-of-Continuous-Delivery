@@ -92,5 +92,19 @@ Exactly the same version as 3a, just released with db v11.
 
 ## Version 4-Final-code
 
-Notes (aim, differences from the previous version, etc).
+Code needed for the forward-compatibility has been removed from everywhere including the tests.
+This version now suports only db version v11. Still in case of showstopper bugs it is possible to rollback to the previous version.
+
+
+- **Backward compativility breaking changes: none.**
+
+- **Rollback version: v3b.**
+
+- **Supported Db version: v11.**
+
+
+
+
+
+
 
