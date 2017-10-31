@@ -69,18 +69,26 @@ Can you think of similar changes that you faced in the past or that could affect
 
 ## Version 3a-Forward-compatible-interim-version
 
-In storage, delivered with db v10
-with auto fallback feature toggle
+In this version Storage can detect the current version of the db and then function properly for both db verson v10 and v11.
+Based on the current version of the db detected by Storage, Program configure itsefl accordingly exposing the new feature for db v11 or hiding it for v10. Feature toggle is not required anymore.
+
+This version is initially released in production and used with db v10, until it can be confirmed to be a reliable version to be used as last official version for the rollback, before moving to db version v11.
 
 - **Backward compativility breaking changes: none.**
 
 - **Rollback version: v2c.**
 
-- **Supported Db version: v10, v11.**
+- **Supported Db version: v10 and v11, used with v10.**
 
 ## Version 3b-Forward-compatible-interim-version
 
-Same as before, delivered with db v11
+Exactly the same version as 3a, just released with db v11.
+
+- **Backward compativility breaking changes: none up to 3a, the db for versions prior 3a.**
+
+- **Rollback version: v3a.**
+
+- **Supported Db version: v10 and v11, used with v11.**
 
 ## Version 4-Final-code
 
