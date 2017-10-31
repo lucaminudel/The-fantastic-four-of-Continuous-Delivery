@@ -69,7 +69,7 @@ Can you think of similar changes that you faced in the past or that could affect
 
 ## Version 3a-Forward-compatible-interim-version
 
-In this version, Storage can detect the current version of the db and then function properly for both db versions v10 and v11.
+In this version, Storage can detect the current version in use of the db, and consequently adapt its behaviour to both db versions v10 and v11.
 Based on the current version of the db detected by Storage, Program configures itself accordingly exposing the new feature for db v11 or hiding it for v10. Feature toggle is not required anymore.
 
 This version is initially released in production and used with db v10, until it can be confirmed to be a reliable version to be used as last official version for the rollback, before moving to db version v11.
