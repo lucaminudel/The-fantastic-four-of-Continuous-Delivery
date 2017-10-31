@@ -34,7 +34,7 @@ The new code added can be automatically tested, while keeping the system working
 
 The side-by-side code in TyreDegradationParameters and TyreDegradationSimulator previously added and tested, is now partially used in production replacing the original simulation code: it is executed using temperature parameters set to zero so that temperature has no effect on the tyre degradation simulation.
 
-In this way the new code can be verified that it does not introduce any bug to the existing simulation model.
+In this way the new code can be verified making sure that it does not introduce any bug to the existing simulation model running in production.
 
 - **Backward compatibility breaking changes: none.**
 
