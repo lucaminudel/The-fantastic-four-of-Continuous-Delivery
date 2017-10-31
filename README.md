@@ -48,12 +48,12 @@ In this way the new code can be verified making sure that it does not introduce 
 This version includes additional code in Program to inquire also for the new simulation parameters of the temperature.
 It also includes additional code in Storage to persist and retrieve the temperature parameter (leading to the v11 of the db).
 
-Because the db version v11 break backwards compatibility, this would make it "impossible" to rollback to the previous version in case of a showstopper bug, leaving us without a viable remediation plan. For that reason, a feature toggle is introduced here to switch the new feature on and off, making it possible to:
+Because the db version v11 break backwards compatibility, this would make it "impossible" to rollback to the previous version in case of a showstopper bug, leaving us without a viable remediation plan. For that reason, a feature toggle is introduced here to switch the new feature that uses v11 on and off, making it possible to:
 - test the new version working on db v11 in the dev/test environment 
 - continue testing the latent-to-live code and the last latent changes in the prod environment, 
-- release this version with the toggle off to keep it working with db v10.
+- release this version with the toggle off to make it work with db v10.
 
-This version is a step-stone for creating a forward compatible version (next version 3a) to manage the breaking changes on the db. 
+This version with the feature toggle in this way becames a step-stone for creating a forward compatible version (next version 3a) to manage the breaking changes on the db. 
 
 - **Backward compatibility breaking changes: none (yes with toggle on).**
 
