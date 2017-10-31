@@ -8,8 +8,6 @@ namespace TyresDegradationSimulator.Console
     {
         public static void Main()
         {
-
-
             var storage = new Storage(ConfigurationManager.AppSettings["db"]);
 
             bool supportV11 = storage.SupportV11;
@@ -22,14 +20,14 @@ namespace TyresDegradationSimulator.Console
 
         }
 
-        private static TyreDegradationParameters ReadTyreParameters(Storage storage, bool temperatureSymFeatureToggle)
+        private static TyreDegradationParameters ReadTyreParameters(Storage storage, bool supportV11)
         {
             var parameters = storage.ReadParameters();
 
             parameters.IdealLapTime = InquireValue("Ideal Lap Time ({0} sec): ", parameters.IdealLapTime);
             parameters.DegradationPerLap = InquireValue("Degradation per Lap ({0} sec): ", parameters.DegradationPerLap);
 
-            if (temperatureSymFeatureToggle) 
+            if (supportV11) 
             {
                 parameters.DegradationPerOperatingTemperatureDelta = InquireValue("Degradation per operating temperature delta ({0} sec): ", parameters.DegradationPerOperatingTemperatureDelta);
             }
@@ -38,9 +36,9 @@ namespace TyresDegradationSimulator.Console
             return parameters;
         }
 
-        private static decimal ReadSimulationParameters(bool temperatureSymFeatureToggle)
+        private static decimal ReadSimulationParameters(bool supportV11)
         {
-            if (!temperatureSymFeatureToggle) { return 0m; }
+            if (!supportV11) { return 0m; }
 
             System.Console.WriteLine();
             decimal temperatureDelta = InquireValue("Simulation operating temperature delta ({0} degrees): ", 0);
