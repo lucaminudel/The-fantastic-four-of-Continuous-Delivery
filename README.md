@@ -53,7 +53,7 @@ Because the db version v11 break beckward compatibility, this would make it "imp
 - continue testing the latent-to-live code and the last latent changes in the prod environment, 
 - release this verion with the toggle off to keep it working with db v10.
 
-This version is a step-stone for creating a forward compatible version to manage the breaking changes on the db. 
+This version is a step-stone for creating a forward compatible version (next version 3a) to manage the breaking changes on the db. 
 
 - **Backward compativility breaking changes: none (yes with toggle on).**
 
@@ -62,7 +62,9 @@ This version is a step-stone for creating a forward compatible version to manage
 - **Supported Db version: v10 (v11 with toggle on).**
 
 Note that the changes from file format v10 to v11 here are used to simulate a change that breaks backwards compatibility in a way that makes it impractical to rollback to the previous version as part of an automated remediation plan.
-An example of a real case is large SQL db storage that makes it extremely slow (because of the quantity of data), or difficult (because of the number of different clients affected) or impossible (because of irreversible schema changes) to rollback to the previous version of the db schema.
+
+An example of a real case is a large SQL db storage that makes it extremely slow (because of the quantity of data), or difficult (because of the number of different clients affected) or impossible (because of irreversible schema changes) to rollback to the previous version of the db schema.
+
 Can you think of similar changes that you faced in the past or that could affect your system in the future?
 
 ## Version 3a-Forward-compatible-interim-version
