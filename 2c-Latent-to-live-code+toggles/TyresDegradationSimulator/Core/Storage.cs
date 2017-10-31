@@ -5,6 +5,13 @@ namespace TyresDegradationSimulator.Core
 {
     public class Storage
     {
+        // This file storage is used to simulate a large SQL db storage that makes it extremely
+        // slow (because of the quantity of data), or difficult (because of the number of clients
+        // affected) or impossible (because of irreversible schema changes) to roll back to a 
+        // previous version.
+        // It is an example of a change that breaks backwards compatibility that is impractical to 
+        // rollback as part of an automated remediation plan.
+
         private string _fileName;
         readonly bool _temperatureSymFeatureToggle;
 
@@ -19,11 +26,6 @@ namespace TyresDegradationSimulator.Core
 
         public TyreDegradationParameters ReadParameters()
         {
-            if (_temperatureSymFeatureToggle) 
-            {
-                return ReadParameters_v11();
-            }
-
             try
             {
                 using (var fileReader = new BinaryReader(new FileStream(_fileName, FileMode.Open, FileAccess.Read)))
@@ -31,8 +33,19 @@ namespace TyresDegradationSimulator.Core
                     var idealLapTime = fileReader.ReadDecimal();
                     var degradationPerLap = fileReader.ReadDecimal();
 
-                    return new TyreDegradationParameters(idealLapTime, degradationPerLap);
+                    var degradationPerOperatingTemperatureDelta = 0m;
 
+                    if (_temperatureSymFeatureToggle)
+                    {
+                        degradationPerOperatingTemperatureDelta = fileReader.ReadDecimal();
+                    }
+
+                    if (fileReader.BaseStream.Length != fileReader.BaseStream.Position) 
+                    {
+                        throw new InvalidOperationException("Unknown db format.");
+                    }
+
+                    return new TyreDegradationParameters(idealLapTime, degradationPerLap, degradationPerOperatingTemperatureDelta);
                 }
             }
             catch (FileNotFoundException)
@@ -45,53 +58,17 @@ namespace TyresDegradationSimulator.Core
         public void WriteParameters(TyreDegradationParameters parameters)
         {
 
-            if (_temperatureSymFeatureToggle)
-            {
-                WriteParameters_v11(parameters);
-                return;
-            }
-
             using (var fileWriter = new BinaryWriter(new FileStream(_fileName, FileMode.Create, FileAccess.Write)))
             {
                 fileWriter.Write(parameters.IdealLapTime);
                 fileWriter.Write(parameters.DegradationPerLap);
-            }
-        }
 
-
-        private void WriteParameters_v11(TyreDegradationParameters parameters)
-        {
-            using (var fileWriter = new BinaryWriter(new FileStream(_fileName, FileMode.Create, FileAccess.Write)))
-            {
-                fileWriter.Write(parameters.IdealLapTime);
-                fileWriter.Write(parameters.DegradationPerLap);
-                fileWriter.Write(parameters.DegradationPerOperatingTemperatureDelta);
-            }
-        }
-
-
-        private TyreDegradationParameters ReadParameters_v11()
-        {
-
-            try
-            {
-                using (var fileReader = new BinaryReader(new FileStream(_fileName, FileMode.Open, FileAccess.Read)))
+                if (_temperatureSymFeatureToggle)
                 {
-                    var idealLapTime = fileReader.ReadDecimal();
-                    var degradationPerLap = fileReader.ReadDecimal();
-                    var degradationPerOperatingTemperatureDelta = fileReader.ReadDecimal();
-
-                    return new TyreDegradationParameters(idealLapTime, degradationPerLap, degradationPerOperatingTemperatureDelta);
-
+                    fileWriter.Write(parameters.DegradationPerOperatingTemperatureDelta);
                 }
             }
-            catch (FileNotFoundException)
-            {
-                return new TyreDegradationParameters();
-            }
         }
-
-
 
         public void ClearParameters() 
         {
