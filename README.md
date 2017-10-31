@@ -48,7 +48,7 @@ In this way the new code can be verified that it does not introduce any bug to t
 This version includes additional code in Program to inquire also for the simulation parameters of the temperature.
 It also includes additional code in Storage to persist and retrieve the temperature parameters (introducing the v11 of the db).
 
-Because the db version v11 break backward compatibility, this would make it "impossible" to rollback to the previous version in case of a showstopper bug, leaving us without a viable remediation plan. For that reason, a feature toggle is introduced here to switch the new feature on and off, making it possible to:
+Because the db version v11 break backwards compatibility, this would make it "impossible" to rollback to the previous version in case of a showstopper bug, leaving us without a viable remediation plan. For that reason, a feature toggle is introduced here to switch the new feature on and off, making it possible to:
 - test the new version working on db v11 in the dev/test environment 
 - continue testing the latent-to-live code and the last latent changes in the prod environment, 
 - release this version with the toggle off to keep it working with db v10.
@@ -92,7 +92,7 @@ Exactly the same version as 3a, just released with db v11.
 
 ## Version 4-Final-code
 
-The extention of the tyre simulation is now completed with a model that takes into account the operating temperature of the tyre. Even if this change required a breacking changes to the db, the patterns employed enabled us to implement the change gradually and rollback to the previous version at any time, safely and quickly.
+The extension of the tyre simulation is now completed with a model that takes into account the operating temperature of the tyre. Even if this change required a breaking change to the db, the patterns employed enabled us to implement the change gradually and rollback to the previous version at any time, safely and quickly.
 
 The code needed for the forward-compatibility has been removed from everywhere including the tests.
 This version now supports only db version v11. Still, in case of showstopper bugs, it is possible to rollback to the previous version.
