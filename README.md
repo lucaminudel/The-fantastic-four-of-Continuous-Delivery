@@ -12,7 +12,7 @@ This is the initial version that simulates tyre degradation using only a linear 
 - **Backward compatibility breaking changes: none.**
 
 - **Rollback version: v0.**
-This is the previous official and well functioning version that can be used to replace this version in case a show-stopper bug shows-up.
+Version 0 is the previous official and well functioning version that can be used to replace this version in case a show-stopper bug shows-up.
 
 - **Supported Db version: v10.**
 The file that stores ideal lap time and the degradation per lap.
