@@ -3,7 +3,7 @@
 In this repo you find an example in C# of the coding patterns described in the InfoQ article [Continuous Delivery Coding Patterns: Latent-to-Live Code & Forward Compatible Interim Versions](https://www.infoq.com/articles/continuous-delivery-coding-patterns).
 
 Below you find a description of the patterns applied in sequence.
-Files for each version are organised in a different folder, to make it easier to download and inspect each version off-line.
+Files for each version are organised in different folders, to make it easier to download and inspect each version off-line.
 
 ## Version 1-Initial-code
 
