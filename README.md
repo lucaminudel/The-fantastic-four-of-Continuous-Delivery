@@ -46,7 +46,7 @@ In this way the new code can be verified making sure that it does not introduce 
 ## Version 2c-Latent-to-live-code + toggle
 
 This version includes additional code in Program to inquire also for the new simulation parameters of the temperature.
-It also includes additional code in Storage to persist and retrieve the temperature parameter (leadint to the v11 of the db).
+It also includes additional code in Storage to persist and retrieve the temperature parameter (leading to the v11 of the db).
 
 Because the db version v11 break backwards compatibility, this would make it "impossible" to rollback to the previous version in case of a showstopper bug, leaving us without a viable remediation plan. For that reason, a feature toggle is introduced here to switch the new feature on and off, making it possible to:
 - test the new version working on db v11 in the dev/test environment 
