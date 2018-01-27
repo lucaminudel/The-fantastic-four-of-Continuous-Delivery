@@ -5,12 +5,18 @@ namespace TyresDegradationSimulator.Core
 {
     public class Storage
     {
-        // This file storage is used to simulate a large SQL db storage that makes it extremely
-        // slow (because of the quantity of data), or difficult (because of the number of clients
-        // affected) or impossible (because of irreversible schema changes) to roll back to a 
-        // previous version.
-        // It is an example of a change that breaks backwards compatibility that is impractical to 
-        // rollback as part of an automated remediation plan.
+        // This Storage class is used here to represent a system component that  
+        // once updated from version v10 to a backward incompatible version v11,
+        // in the event of a showstopper bug it cannot be rolled back at all or
+        // quickly enough to avoid a disruption for the users.
+        // A component like that could be for example:
+        // - a relational database with a large amount of data, updated to v11 
+        //   by a DML command that cannot be easily undone.
+        // or   
+        // - a service in the cloud or an AWS Lambda function with an API that 
+        //   changes between v10 and v11, that cannot stay live with both 
+        //   versions at the same time, and with a large number of different 
+        //   client apps that cannot be easily rolled back to v10 all together.
 
         private string _fileName;
         readonly bool _temperatureSymFeatureToggle;
