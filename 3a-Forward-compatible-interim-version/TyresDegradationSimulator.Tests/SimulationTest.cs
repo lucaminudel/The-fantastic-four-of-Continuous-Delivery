@@ -45,7 +45,7 @@ namespace TyresDegradationSimulator.Console.AcceptanceTests
             SetUpStorageV10();
 
             RunProgram("81.972", "0.081");
-            var output = RunProgram("", "", "", "0");
+            var output = RunProgram("", "");
             Assert.That(output, Does.EndWith("Lap 5: 82.377\n  Lap 6: 82.458\n  Lap 7: 82.539\n  Lap 8: 82.620\n  Lap 9: 82.701\n"));
         }
 
